@@ -78,8 +78,9 @@ public class FlutterSecureStorage {
         Map<String, String> all = new HashMap<>();
         for (Map.Entry<String, String> entry : raw.entrySet()) {
             String keyWithPrefix = entry.getKey();
-            if (keyWithPrefix.contains(ELEMENT_PREFERENCES_KEY_PREFIX)) {
-                String key = entry.getKey().replaceFirst(ELEMENT_PREFERENCES_KEY_PREFIX + '_', "");
+            //if (keyWithPrefix.contains(ELEMENT_PREFERENCES_KEY_PREFIX)) {
+                // String key = entry.getKey().replaceFirst(ELEMENT_PREFERENCES_KEY_PREFIX + '_', "");
+                String key = keyWithPrefix;
                 if (getUseEncryptedSharedPreferences()) {
                     all.put(key, entry.getValue());
                 } else {
@@ -88,7 +89,7 @@ public class FlutterSecureStorage {
 
                     all.put(key, value);
                 }
-            }
+            //}
         }
         return all;
     }
